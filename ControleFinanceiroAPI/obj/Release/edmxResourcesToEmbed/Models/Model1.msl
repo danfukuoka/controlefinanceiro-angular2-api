@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ControleFinanceiro1ModelStoreContainer" CdmEntityContainer="ControleFinanceiro1Entities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="ControleFinanceiro1Model.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="ControleFinanceiro1Model.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Compra">
+      <EntityTypeMapping TypeName="ControleFinanceiro1Model.Compra">
+        <MappingFragment StoreEntitySet="Compra">
+          <ScalarProperty Name="CompraID" ColumnName="CompraID" />
+          <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+          <ScalarProperty Name="EstabelecimentoID" ColumnName="EstabelecimentoID" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estabelecimento">
+      <EntityTypeMapping TypeName="ControleFinanceiro1Model.Estabelecimento">
+        <MappingFragment StoreEntitySet="Estabelecimento">
+          <ScalarProperty Name="EstabelecimentoID" ColumnName="EstabelecimentoID" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log">
+      <EntityTypeMapping TypeName="ControleFinanceiro1Model.Log">
+        <MappingFragment StoreEntitySet="Log">
+          <ScalarProperty Name="DataHora" ColumnName="DataHora" />
+          <ScalarProperty Name="Operacao" ColumnName="Operacao" />
+          <ScalarProperty Name="Identificacao" ColumnName="Identificacao" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

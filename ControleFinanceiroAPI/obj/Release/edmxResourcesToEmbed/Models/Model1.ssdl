@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ControleFinanceiro1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="CategoriaID" />
+    </Key>
+    <Property Name="CategoriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Compra">
+    <Key>
+      <PropertyRef Name="CompraID" />
+    </Key>
+    <Property Name="CompraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoriaID" Type="int" Nullable="false" />
+    <Property Name="EstabelecimentoID" Type="int" Nullable="false" />
+    <Property Name="Data" Type="datetime" Nullable="false" />
+    <Property Name="Valor" Type="real" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estabelecimento">
+    <Key>
+      <PropertyRef Name="EstabelecimentoID" />
+    </Key>
+    <Property Name="EstabelecimentoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="DataHora" Type="datetime" />
+    <Property Name="Operacao" Type="varchar" MaxLength="255" />
+    <Property Name="Identificacao" Type="varchar" MaxLength="255" />
+    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_Compra_dbo_Categoria_CategoriaID">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="CategoriaID" />
+      </Principal>
+      <Dependent Role="Compra">
+        <PropertyRef Name="CategoriaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Compra_dbo_Estabelecimento_EstabelecimentoID">
+    <End Role="Estabelecimento" Type="Self.Estabelecimento" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estabelecimento">
+        <PropertyRef Name="EstabelecimentoID" />
+      </Principal>
+      <Dependent Role="Compra">
+        <PropertyRef Name="EstabelecimentoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ControleFinanceiro1ModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estabelecimento" EntityType="Self.Estabelecimento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_Compra_dbo_Categoria_CategoriaID" Association="Self.FK_dbo_Compra_dbo_Categoria_CategoriaID">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Compra" EntitySet="Compra" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Compra_dbo_Estabelecimento_EstabelecimentoID" Association="Self.FK_dbo_Compra_dbo_Estabelecimento_EstabelecimentoID">
+      <End Role="Estabelecimento" EntitySet="Estabelecimento" />
+      <End Role="Compra" EntitySet="Compra" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
